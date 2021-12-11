@@ -23,7 +23,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: COUNTER_ENDPOINT
-          value: 'http://counter-backend.default.svc.cluster.local:5000'
+          value: 'http://counter-backend.demo.svc.cluster.local:5000'
         ports:
         - name: frontend-port
           containerPort: 8000
