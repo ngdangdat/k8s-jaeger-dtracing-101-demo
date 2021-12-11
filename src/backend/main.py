@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+import logging
 
 from flask import Flask
 from flask import request
@@ -7,6 +8,7 @@ from jaeger_client import Config
 from flask_opentracing import FlaskTracing
 
 
+logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
 config = Config(
   config={
@@ -17,7 +19,7 @@ config = Config(
     'logging': True,
     'reporter_batch_size': 1,
   }, 
-  service_name="service",
+  service_name="backend",
 )
 jaeger_tracer = config.initialize_tracer()
 tracing = FlaskTracing(jaeger_tracer, True, app)
@@ -40,6 +42,7 @@ def increase_counter():
 
 @app.route('/api/counter', methods=['GET', 'POST'])
 def counter():
+  logging.info(request.headers)
   if request.method == 'GET':
     return get_counter()
   elif request.method == 'POST':

@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: counter-backend
-        image: counter-backend:0.1
+        image: counter-backend:0.2
         imagePullPolicy: IfNotPresent
         ports:
         - name: backend-port
