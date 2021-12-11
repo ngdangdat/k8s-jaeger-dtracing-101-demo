@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: counter-backend
+  labels:
+    name: counter-backend
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: counter-backend
+  template:
+    metadata:
+      labels:
+        app: counter-backend
+    spec:
+      containers:
+      - name: counter-backend
+        image: counter-backend:0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: backend-port
+          containerPort: 5000
+          protocol: TCP
