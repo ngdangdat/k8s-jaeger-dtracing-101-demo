@@ -48,8 +48,8 @@ kubectl create -f https://raw.githubusercontent.com/jaegertracing/jaeger-operato
 kubectl create -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/config/rbac/service_account.yaml
 kubectl create -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/config/rbac/role.yaml
 kubectl apply -f ./deploy/cluster/role_binding.yaml
-# kubectl create -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/simplest.yaml
-kubectl create -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/operator-with-tracing.yaml
+kubectl apply -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/simplest.yaml
+kubectl apply -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/operator-with-tracing.yaml
 ```
 
 Set default namespace
