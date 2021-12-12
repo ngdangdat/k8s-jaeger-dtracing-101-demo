@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: counter-frontend
-        image: counter-frontend:0.1
+        image: counter-frontend:0.2
         imagePullPolicy: IfNotPresent
         env:
         - name: COUNTER_ENDPOINT
