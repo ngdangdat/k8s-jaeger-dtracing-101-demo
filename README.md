@@ -48,8 +48,8 @@ kubectl create -f https://raw.githubusercontent.com/jaegertracing/jaeger-operato
 kubectl create -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/config/rbac/service_account.yaml
 kubectl create -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/config/rbac/role.yaml
 kubectl apply -f ./deploy/cluster/role_binding.yaml
-kubectl apply -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/simplest.yaml
 kubectl apply -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/operator-with-tracing.yaml
+kubectl apply -n demo -f https://raw.githubusercontent.com/jaegertracing/jaeger-operator/v1.29.0/examples/simplest.yaml
 ```
 
 Set default namespace
@@ -101,11 +101,14 @@ kustomize build deploy/ | kubectl -n demo apply -f -
 Port forwarding for Jaeger dashboard's port
 
 ```sh
-
+kubectl port-forward $(kubectl get pods -l=app="jaeger" -o name) 16686:16686
 ```
 
 Port forwarding for frontend application (to call as a client)
 
 ```sh
-
+kubectl port-forward $(kubectl get pods -l=app="counter-frontend" -o name) 8000:8000
 ```
+
+# References
+- https://www.digitalocean.com/community/tutorials/how-to-implement-distributed-tracing-with-jaeger-on-kubernetes
