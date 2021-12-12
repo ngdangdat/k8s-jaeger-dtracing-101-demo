@@ -101,13 +101,13 @@ kustomize build deploy/ | kubectl -n demo apply -f -
 Port forwarding for Jaeger dashboard's port
 
 ```sh
-
+kubectl port-forward $(kubectl get pods -l=app="jaeger" -o name) 16686:16686
 ```
 
 Port forwarding for frontend application (to call as a client)
 
 ```sh
-
+kubectl port-forward $(kubectl get pods -l=app="counter-frontend" -o name) 8000:8000
 ```
 
 # References
