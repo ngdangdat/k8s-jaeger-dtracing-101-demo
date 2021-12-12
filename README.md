@@ -109,3 +109,6 @@ Port forwarding for frontend application (to call as a client)
 ```sh
 
 ```
+
+# References
+- https://www.digitalocean.com/community/tutorials/how-to-implement-distributed-tracing-with-jaeger-on-kubernetes
